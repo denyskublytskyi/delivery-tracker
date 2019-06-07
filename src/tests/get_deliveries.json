@@ -1,0 +1,69 @@
+{
+  "count": 2,
+  "data": [
+    {
+      "cuid": "cjw7jmz40020t01x19ose0mxa",
+      "status": "pending",
+      "createdAt": "2019-05-28T08:33:20.448Z",
+      "assignedAt": "2019-05-31T13:21:47.240Z",
+      "purchasedAt": "2019-05-31T00:00:00.000Z",
+      "completedAt": null,
+      "trackingCode": "PQ60TQ0471310730130300X",
+      "item": {
+        "imgUrl": {
+          "x3": {
+            "default": "https://drakemall-files.s3.eu-central-1.amazonaws.com/Rhythmic-cjls1un6q0mzh01rxqgy4gycs.png"
+          },
+          "x2": {
+            "default": "https://drakemall-files.s3.eu-central-1.amazonaws.com/Rhythmic-cjls1uqzp0mzj01rxry7tgtv1.png"
+          },
+          "x1": {
+            "default": "https://drakemall-files.s3.eu-central-1.amazonaws.com/Rhythmic-cjls1uul40mzo01rxw4hpk1xi.png"
+          }
+        },
+        "productUrl": "https://ru.aliexpress.com/item/1-4/32844368076.html?spm=a2g0v.search0103.3.1.1ebd75bchAoD2D&amp;ws_ab_test=searchweb0_0%2Csearchweb201602_5_10152_10151_10065_10344_10068_10342_10343_10059_10340_10341_10696_100031_10084_10083_10103_10618_10624_10307_10623_10622_10621_10620%2Csearchweb201603_16%2CppcSwitch_5&amp;algo_expid=5e0129c2-9eb6-44c8-8b90-aa32918b9b79-0&amp;algo_pvid=5e0129c2-9eb6-44c8-8b90-aa32918b9b79&amp;transAbTest=ae803_1&amp;priceBeautifyAB=0",
+        "price": 15,
+        "cuid": "cjls1uxs70mzr01rxjgiqxx1a",
+        "name": "Djembe Drum"
+      },
+      "user": {
+        "cuid": "cjuni53yd027b01vpooj8nkgi",
+        "name": "theisra98-5kwFy99VU",
+        "email": "theisra98@gmail.com",
+        "accountType": "gaming"
+      }
+    },
+    {
+      "cuid": "cjw5e2t500o5r01w2nd48vkek",
+      "status": "pending",
+      "createdAt": "2019-05-26T20:22:09.156Z",
+      "assignedAt": "2019-05-31T11:55:03.311Z",
+      "purchasedAt": "2019-05-31T00:00:00.000Z",
+      "completedAt": null,
+      "trackingCode": "RB762310125SG",
+      "item": {
+        "imgUrl": {
+          "x3": {
+            "default": "https://drakemall-files.s3.eu-central-1.amazonaws.com/SERVO-22-cjrq7k498005301tzbt5ufo92.png"
+          },
+          "x2": {
+            "default": "https://drakemall-files.s3.eu-central-1.amazonaws.com/SERVO-22-cjrq7k54f005401tzuwy0mcwv.png"
+          },
+          "x1": {
+            "default": "https://drakemall-files.s3.eu-central-1.amazonaws.com/SERVO-22-cjrq7k762005501tzkvkqurkc.png"
+          }
+        },
+        "productUrl": "https://www.aliexpress.com/item/SERVO-225-Original-Phone-Dual-SIM-Cards-2-4-inch-Screen-Double-flash-Bluetooth-Memory-Card/32919377956.html?spm=2114.search0104.3.294.62331815PTmjcw&amp;ws_ab_test=searchweb0_0,searchweb201602_1_10065_10068_319_317_10548_10696_453_10084_454_10083_433_10618_10307_10821_537_10302_536_10902_10059_10884_10887_10319_321_322_10103,searchweb201603_55,ppcSwitch_0&amp;algo_expid=a98f36a5-231a-4ce6-a0f0-0453e932efa2-42&amp;algo_pvid=a98f36a5-231a-4ce6-a0f0-0453e932efa2&amp;transAbTest=ae803_5",
+        "price": 15,
+        "cuid": "cjrq7kq41005601tzkufyyxme",
+        "name": "Servo 225 Dual-SIM"
+      },
+      "user": {
+        "cuid": "cjw2qo2p700bz01y894ay1r43",
+        "name": "isabel69polo",
+        "email": "isabel69polo@gmail.com",
+        "accountType": "gaming"
+      }
+    }
+  ]
+}

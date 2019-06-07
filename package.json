@@ -1,0 +1,56 @@
+{
+  "name": "delivery-tracker",
+  "version": "1.0.0",
+  "description": "Job for auto tracking packages in 17Track and complete delivered orders",
+  "main": "index.js",
+  "author": {
+    "name": "Denys Kublytskyi",
+    "email": "deniskublitskiy@gmail.com"
+  },
+  "dependencies": {
+    "@slack/webhook": "^5.0.0",
+    "axios": "^0.19.0",
+    "bunyan": "^1.8.12",
+    "date-fns": "^1.30.1",
+    "dotenv-safe": "^6.1.0",
+    "lodash": "^4.17.11",
+    "lru-cache": "^5.1.1",
+    "ms": "^2.1.1",
+    "puppeteer": "^1.17.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "husky": "^2.4.0",
+    "jest": "^24.8.0",
+    "nock": "^10.0.6",
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "lint": "npx eslint ./ --fix",
+    "start": "node -r dotenv-safe/config --inspect ./",
+    "dev": "nodemon --exec \"node -r dotenv-safe/config\" --inspect-brk=9225 ./",
+    "postversion": "cat docker-compose.yml | yq -y '.services.tracker.image=1'"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules/*",
+      "*.spec.js"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "jest": {
+    "verbose": true,
+    "setupFiles": [
+      "dotenv/config"
+    ]
+  },
+  "license": "ISC"
+}

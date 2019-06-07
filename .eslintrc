@@ -1,0 +1,12 @@
+{
+  "extends": ["airbnb-base"],
+  "env": {
+    "jest": true
+  },
+  "plugins": ["jest"],
+  "rules": {
+    "semi": 0,
+    "indent": ["error", 4],
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }]
+  }
+}
