@@ -39,8 +39,8 @@ class NotificationService {
             `We have ${deliveries.length} :package: in shipping\n`,
             'I found out in https://www.17track.net that: ',
             ...countsByStatuses,
-            '\n',
-            `And also hve auto completed ${completed.length} :package: deliveries:\n`,
+            '',
+            `And also I have auto completed ${completed.length} :package: deliveries:\n`,
             ...formatCompleted,
         ].join('\n')
 

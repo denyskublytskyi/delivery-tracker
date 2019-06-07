@@ -2,20 +2,22 @@ const ms = require('ms')
 const get = require('lodash/get')
 const find = require('lodash/find')
 const map = require('lodash/map')
-const values = require('lodash/values')
 const path = require('path')
+const LRU = require('lru-cache')
 const nock = require('nock')
 
 const deliveriesMock = require('./get_deliveries')
 
 const { DeliveryService } = require('../modules/delivery/delivery.service')
-const { PackageTrackerService, PackageStatuses } = require('../modules/package-tracker/package-tracker.service')
+const { PackageTrackerService } = require('../modules/package-tracker/package-tracker.service')
 
 const logger = {
     info: jest.fn(),
     error: jest.fn(),
     debug: jest.fn(),
 }
+
+const cache = new LRU()
 
 beforeAll(() => {
     nock(process.env.API_URL).post('/users/sign-in').reply(200, { token: '' })
@@ -36,13 +38,13 @@ describe('Package tracker module', () => {
         const packageTracker = new PackageTrackerService({
             trackingUrl: process.env.TRACKING_URL,
             trackingStatusSelector: process.env.TRACKING_STATUS_SELECTOR,
+            cache,
         })
 
         const statuses = await packageTracker.getPackageStatuses({ trackingCodes })
 
         expect(statuses instanceof Map).toBe(true)
         expect([...statuses]).toHaveLength(trackingCodes.length)
-        expect([...statuses.values()]).arrayContaining(values(PackageStatuses))
     })
 })
 
@@ -53,6 +55,7 @@ describe('Delivery module', () => {
             apiUrl: process.env.API_URL,
             apiUserEmail: process.env.API_USER_EMAIL,
             apiUserPassword: process.env.API_USER_PASSWORD,
+            cache,
             logger,
         })
 

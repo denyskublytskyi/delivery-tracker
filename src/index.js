@@ -1,17 +1,23 @@
 const map = require('lodash/fp/map')
 const filter = require('lodash/fp/filter')
 const compose = require('lodash/fp/compose')
-
+const LRU = require('lru-cache')
+const ms = require('ms')
 
 const { NotificationService } = require('./modules/notifications/notification.service')
 const { DeliveryService } = require('./modules/delivery')
 const { PackageTrackerService, PackageStatuses } = require('./modules/package-tracker')
 
 const bootstrap = async ({ logger }) => {
+    const cache = new LRU({
+        maxAge: ms('2h'),
+    })
+
     const deliveryService = new DeliveryService({
         apiUrl: process.env.API_URL,
         apiUserEmail: process.env.API_USER_EMAIL,
         apiUserPassword: process.env.API_USER_PASSWORD,
+        cache,
         logger,
     })
     const packageTrackerService = new PackageTrackerService({
@@ -22,6 +28,7 @@ const bootstrap = async ({ logger }) => {
     const notificationService = new NotificationService({
         slackWebhookUrl: process.env.SLACK_WEBHOOK_URL,
         trackingUrl: process.env.TRACKING_URL,
+        cache,
         logger,
     })
 

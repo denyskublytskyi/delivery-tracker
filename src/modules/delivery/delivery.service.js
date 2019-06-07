@@ -1,6 +1,5 @@
 const ms = require('ms')
 const axios = require('axios')
-const LRU = require('lru-cache')
 const chunk = require('lodash/chunk')
 const get = require('lodash/get')
 const compact = require('lodash/compact')
@@ -12,13 +11,12 @@ class DeliveryService {
      * @param {String} apiUserEmail
      * @param {String} apiUserPassword
      * @param logger
+     * @param cache
      */
     constructor({
-        apiUrl, apiUserEmail, apiUserPassword, logger,
+        apiUrl, apiUserEmail, apiUserPassword, logger, cache,
     }) {
-        this._cache = new LRU({
-            maxAge: ms('2h'),
-        })
+        this._cache = cache
         this._logger = logger
         this._apiUrl = apiUrl
         this._apiUserEmail = apiUserEmail

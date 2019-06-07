@@ -1,7 +1,6 @@
 const { EventEmitter } = require('events')
 const puppeteer = require('puppeteer')
 const result = require('lodash/result')
-const uniq = require('lodash/uniq')
 const ms = require('ms')
 
 /**
@@ -22,12 +21,14 @@ const PackageStatusesList = Object.values(PackageStatuses)
 class PackageTrackerService extends EventEmitter {
     /**
      *
-     * @param trackingUrl
-     * @param trackingStatusSelector
+     * @param {String} trackingUrl
+     * @param {String} trackingStatusSelector
+     * @param cache
      */
-    constructor({ trackingUrl, trackingStatusSelector }) {
+    constructor({ trackingUrl, trackingStatusSelector, cache }) {
         super()
         this._trackingUrl = trackingUrl
+        this._cache = cache
         this._trackingStatusSelector = trackingStatusSelector
     }
 
@@ -44,25 +45,28 @@ class PackageTrackerService extends EventEmitter {
 
         const packageStatuses = new Map()
         /* eslint-disable */
-        for (const trackingCode of uniq(trackingCodes)) {
-            const page = await browser.newPage()
-            await page.goto(this._trackingUrl.replace('{trackingCode}', trackingCode))
+        for (const trackingCode of trackingCodes) {
+            let status = this._cache.get(trackingCode)
+            if (!status) {
+                const page = await browser.newPage()
+                await page.goto(this._trackingUrl.replace('{trackingCode}', trackingCode))
 
-            let attempts = 0
-            let status = null
+                let attempts = 0
 
-            while (!PackageStatusesList.includes(status) && attempts++ < 5) {
-                await page.waitFor(ms('5s'))
-                const element = await page.$(this._trackingStatusSelector)
-                const statusText = await page.evaluate(element => element.textContent, element)
+                while (!PackageStatusesList.includes(status) && attempts++ < 5) {
+                    await page.waitFor(ms('5s'))
+                    const element = await page.$(this._trackingStatusSelector)
+                    const statusText = await page.evaluate(element => element.textContent, element)
 
-                status = result(statusText.replace(/\s/, '').match(/\w+/), '0.toUpperCase')
+                    status = result(statusText.replace(/\s/, '').match(/\w+/), '0.toUpperCase')
+                }
+                await page.close()
+
+                this._cache.set(trackingCode, status)
             }
+
             packageStatuses.set(trackingCode, status)
-
             process.nextTick(() => this.emit(PackageTrackerService.events.TRACKED, ({ trackingCode, status })))
-
-            await page.close()
         }
 
         return packageStatuses
