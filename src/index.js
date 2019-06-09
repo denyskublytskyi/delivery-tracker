@@ -23,13 +23,12 @@ const bootstrap = async ({ logger }) => {
     const packageTrackerService = new PackageTrackerService({
         trackingUrl: process.env.TRACKING_URL,
         trackingStatusSelector: process.env.TRACKING_STATUS_SELECTOR,
+        cache,
     })
 
     const notificationService = new NotificationService({
         slackWebhookUrl: process.env.SLACK_WEBHOOK_URL,
         trackingUrl: process.env.TRACKING_URL,
-        cache,
-        logger,
     })
 
     const { data: deliveries } = await deliveryService.getDeliveriesInTransit()

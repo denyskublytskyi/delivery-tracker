@@ -1,3 +1,4 @@
+const assert = require('assert-plus')
 const ms = require('ms')
 const axios = require('axios')
 const chunk = require('lodash/chunk')
@@ -16,6 +17,12 @@ class DeliveryService {
     constructor({
         apiUrl, apiUserEmail, apiUserPassword, logger, cache,
     }) {
+        assert.object(cache, 'cache')
+        assert.object(logger, 'logger')
+        assert.string(apiUrl, 'apiUrl')
+        assert.string(apiUserEmail, 'apiUserEmail')
+        assert.string(apiUserPassword, 'apiUserPassword')
+
         this._cache = cache
         this._logger = logger
         this._apiUrl = apiUrl

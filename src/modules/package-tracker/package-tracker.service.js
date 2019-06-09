@@ -1,4 +1,5 @@
 const { EventEmitter } = require('events')
+const assert = require('assert-plus')
 const puppeteer = require('puppeteer')
 const result = require('lodash/result')
 const ms = require('ms')
@@ -27,6 +28,11 @@ class PackageTrackerService extends EventEmitter {
      */
     constructor({ trackingUrl, trackingStatusSelector, cache }) {
         super()
+
+        assert.string(trackingUrl, 'trackingUrl')
+        assert.string(trackingStatusSelector, 'trackingStatusSelector')
+        assert.object(cache, 'cache')
+
         this._trackingUrl = trackingUrl
         this._cache = cache
         this._trackingStatusSelector = trackingStatusSelector

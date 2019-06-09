@@ -1,5 +1,6 @@
 const { IncomingWebhook } = require('@slack/webhook')
 const format = require('date-fns/format')
+const assert = require('assert-plus')
 const countBy = require('lodash/fp/countBy')
 const map = require('lodash/fp/map')
 const compose = require('lodash/fp/compose')
@@ -9,13 +10,14 @@ class NotificationService {
     /**
      *
      * @param {String} slackWebhookUrl
-     * @param logger
      * @param {String} trackingUrl
      */
-    constructor({ slackWebhookUrl, logger, trackingUrl }) {
+    constructor({ slackWebhookUrl, trackingUrl }) {
+        assert.object(slackWebhookUrl, 'slackWebhookUrl')
+        assert.string(trackingUrl, 'trackingUrl')
+
         this._trackingUrl = trackingUrl
         this._webhook = new IncomingWebhook(slackWebhookUrl)
-        this._logger = logger
     }
 
     /**
