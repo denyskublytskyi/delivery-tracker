@@ -33,8 +33,7 @@
     "test": "jest --detectOpenHandles",
     "lint": "npx eslint ./ --fix",
     "start": "node -r dotenv-safe/config --inspect ./",
-    "dev": "nodemon --exec \"node -r dotenv-safe/config\" --inspect-brk=9225 ./",
-    "postversion": "cat docker-compose.yml | yq -y '.services.tracker.image=1'"
+    "dev": "nodemon --exec \"node -r dotenv-safe/config\" --inspect-brk=9225 ./"
   },
   "nodemonConfig": {
     "ignore": [
