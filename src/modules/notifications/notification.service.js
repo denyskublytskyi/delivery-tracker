@@ -13,7 +13,7 @@ class NotificationService {
      * @param {String} trackingUrl
      */
     constructor({ slackWebhookUrl, trackingUrl }) {
-        assert.object(slackWebhookUrl, 'slackWebhookUrl')
+        assert.string(slackWebhookUrl, 'slackWebhookUrl')
         assert.string(trackingUrl, 'trackingUrl')
 
         this._trackingUrl = trackingUrl
