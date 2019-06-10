@@ -49,7 +49,7 @@
   "jest": {
     "verbose": true,
     "setupFiles": [
-      "dotenv/config"
+      "dotenv-safe/config"
     ]
   },
   "license": "ISC"

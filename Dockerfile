@@ -8,6 +8,7 @@ COPY index.js       ./
 COPY .env.example   ./
 COPY src            ./src
 
+# TODO: move to separate Docker image
 RUN apk update && apk upgrade && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
