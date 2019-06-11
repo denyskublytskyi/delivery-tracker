@@ -42,7 +42,7 @@ class NotificationService {
             'I found out in https://www.17track.net that: ',
             ...countsByStatuses,
             '',
-            ...formatCompleted ? [`And also I have auto completed ${completed.length} :package: deliveries:\n`, formatCompleted] : ['There are no delivered packages yet...'],
+            ...formatCompleted ? [`And also I have auto completed ${completed.length} :package: deliveries:\n`, ...formatCompleted] : ['There are no delivered packages yet...'],
         ].join('\n')
 
         const response = await this._webhook.send(message)
