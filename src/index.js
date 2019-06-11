@@ -42,15 +42,20 @@ const bootstrap = async ({ logger }) => {
     const statuses = await packageTrackerService.getPackageStatuses({ trackingCodes })
     logger.info({ statuses: Array.from(statuses) }, 'Deliveries statuses')
 
+    const deliveriesWithStatuses = map(delivery => ({
+        ...delivery,
+        trackStatus: statuses.get(delivery.trackingCode),
+    }))(deliveries)
+
     const cuids = compose(
         map('cuid'),
-        filter(({ trackingCode }) => statuses.get(trackingCode) === PackageStatuses.DELIVERED),
-    )(deliveries)
+        filter(['trackStatus', PackageStatuses.DELIVERED]),
+    )(deliveriesWithStatuses)
 
     const completed = await deliveryService.completeDeliveries({ cuids })
     logger.info({ completed }, 'Deliveries completed')
 
-    const message = await notificationService.notify({ deliveries, completed, statuses })
+    const message = await notificationService.notify({ deliveries, completed })
     logger.info({ message }, 'Message sent to slack!')
 }
 

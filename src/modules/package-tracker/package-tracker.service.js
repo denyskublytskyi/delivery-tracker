@@ -1,6 +1,7 @@
 const { EventEmitter } = require('events')
 const assert = require('assert-plus')
 const puppeteer = require('puppeteer')
+const uniq = require('lodash/uniq')
 const result = require('lodash/result')
 const ms = require('ms')
 
@@ -51,7 +52,7 @@ class PackageTrackerService extends EventEmitter {
 
         const packageStatuses = new Map()
         /* eslint-disable */
-        for (const trackingCode of trackingCodes) {
+        for (const trackingCode of uniq(trackingCodes)) {
             let status = this._cache.get(trackingCode)
             if (!status) {
                 const page = await browser.newPage()

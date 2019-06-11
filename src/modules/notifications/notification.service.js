@@ -23,16 +23,15 @@ class NotificationService {
     /**
      *
      * @param {Array} deliveries
-     * @param {Map} statuses
      * @param {Array} completed
      * @returns {Promise<{response: *, message: string}>}
      */
-    async notify({ deliveries, statuses, completed }) {
+    async notify({ deliveries, completed }) {
         const countsByStatuses = compose(
             map(([status, count]) => `${status} - ${count} packages`),
             toPairs,
-            countBy('1'),
-        )(Array.from(statuses))
+            countBy('trackStatus'),
+        )(deliveries)
 
         const formatCompleted = completed.map(({ cuid, item, trackingCode }) => `Cuid: ${cuid} - ${item.name} - ${this._trackingUrl.replace('{trackingCode}', trackingCode)}`)
 
