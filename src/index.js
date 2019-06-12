@@ -55,7 +55,7 @@ const bootstrap = async ({ logger }) => {
     const completed = await deliveryService.completeDeliveries({ cuids })
     logger.info({ completed }, 'Deliveries completed')
 
-    const message = await notificationService.notify({ deliveries, completed })
+    const message = await notificationService.notify({ deliveries: deliveriesWithStatuses, completed })
     logger.info({ message }, 'Message sent to slack!')
 }
 
