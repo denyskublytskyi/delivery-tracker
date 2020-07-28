@@ -1,6 +1,6 @@
 {
   "name": "delivery-tracker",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Job for auto tracking packages in 17Track and complete delivered orders",
   "main": "index.js",
   "author": {
@@ -17,7 +17,7 @@
     "lodash": "^4.17.11",
     "lru-cache": "^5.1.1",
     "ms": "^2.1.1",
-    "puppeteer": "^1.17.0"
+    "puppeteer": "^1.20.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

@@ -48,6 +48,7 @@ class PackageTrackerService extends EventEmitter {
         const browser = await puppeteer.launch({
             executablePath: process.env.CHROME_BIN || null,
             args: ['--no-sandbox'],
+            headless: true,
         })
 
         const packageStatuses = new Map()
