@@ -56,6 +56,18 @@ class PackageTrackerService extends EventEmitter {
             let status = this._cache.get(trackingCode)
             if (!status) {
                 const page = await browser.newPage()
+
+                await page.evaluateOnNewDocument(() => {
+                    Object.defineProperty(navigator, 'webdriver', { get: () => false, })
+                })
+
+                await page.setUserAgent(
+                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+                );
+                await page.setExtraHTTPHeaders({
+                    "Accept-Language": "en;q=0.9",
+                });
+
                 await page.goto(this._trackingUrl.replace('{trackingCode}', trackingCode))
 
                 let attempts = 0
