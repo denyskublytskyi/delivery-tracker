@@ -1,6 +1,6 @@
 {
   "name": "delivery-tracker",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Job for auto tracking packages in 17Track and complete delivered orders",
   "main": "index.js",
   "author": {

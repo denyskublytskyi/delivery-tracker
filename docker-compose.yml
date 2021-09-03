@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
   tracker:
-    image: registry.gitlab.com/drake-reppo/delivery-tracker:v1.2.1
+    image: registry.gitlab.com/drake-reppo/delivery-tracker:v1.2.3
     build:
       context: .
     expose:
