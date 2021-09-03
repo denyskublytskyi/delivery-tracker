@@ -2,21 +2,13 @@ version: "3.6"
 
 services:
   tracker:
-    image: registry.gitlab.com/skinholdings/delivery-tracker:v1.2.0
+    image: registry.gitlab.com/drake-reppo/delivery-tracker:v1.2.1
     build:
       context: .
     expose:
       - 9229
     ports:
       - 9224:9229
-    environment:
-      API_URL: ""
-      API_USER_EMAIL: ""
-      API_USER_PASSWORD: ""
-
-      TRACKING_STATUS_SELECTOR: ""
-      TRACKING_URL: ""
-
-      SLACK_WEBHOOK_URL: ""
+    env_file: .env
 
 

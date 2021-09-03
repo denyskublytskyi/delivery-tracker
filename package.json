@@ -1,6 +1,6 @@
 {
   "name": "delivery-tracker",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Job for auto tracking packages in 17Track and complete delivered orders",
   "main": "index.js",
   "author": {
@@ -33,7 +33,7 @@
     "test": "jest --detectOpenHandles",
     "lint": "npx eslint ./ --fix",
     "start": "node -r dotenv-safe/config --inspect ./",
-    "dev": "nodemon --exec \"node -r dotenv-safe/config\" --inspect-brk=9225 ./"
+    "dev": "nodemon --exec \"node -r dotenv-safe/config\" --inspect-brk=9229 ./"
   },
   "nodemonConfig": {
     "ignore": [
