@@ -33,7 +33,8 @@
     "test": "jest --detectOpenHandles",
     "lint": "npx eslint ./ --fix",
     "start": "node -r dotenv-safe/config --inspect ./",
-    "dev": "nodemon --exec \"node -r dotenv-safe/config\" --inspect-brk=9229 ./"
+    "dev": "nodemon --exec \"node -r dotenv-safe/config\" --inspect-brk=9229 ./",
+    "bump-version": "git checkout master && git pull gitlab master && git tag v$npm_package_version && git push gitlab v$npm_package_version"
   },
   "nodemonConfig": {
     "ignore": [
