@@ -74,7 +74,7 @@ class PackageTrackerService extends EventEmitter {
                 let attempts = 0
 
                 while (!PackageStatusesList.includes(status) && attempts++ < 5) {
-                    await page.waitFor(ms('5s'))
+                    await page.waitForTimeout(ms('5s'))
                     const element = await page.$(this._trackingStatusSelector)
                     const statusText = await page.evaluate(element => element ? element.textContent : "INVALID_TRACKING_CODE", element)
 

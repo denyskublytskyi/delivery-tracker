@@ -1,6 +1,6 @@
 {
   "name": "delivery-tracker",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Job for auto tracking packages in 17Track and complete delivered orders",
   "main": "index.js",
   "author": {
@@ -8,16 +8,16 @@
     "email": "deniskublitskiy@gmail.com"
   },
   "dependencies": {
-    "@slack/webhook": "^5.0.0",
+    "@slack/webhook": "^6.0.0",
     "assert-plus": "^1.0.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.4",
     "bunyan": "^1.8.12",
     "date-fns": "^1.30.1",
     "dotenv-safe": "^6.1.0",
     "lodash": "^4.17.11",
     "lru-cache": "^5.1.1",
     "ms": "^2.1.1",
-    "puppeteer": "^1.20.0"
+    "puppeteer": "10.4.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
